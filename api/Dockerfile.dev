@@ -1,0 +1,8 @@
+FROM node:14
+
+WORKDIR /usr/src/app
+
+# Mount code from docker-compose and
+# ignoring node_modules
+
+EXPOSE 3000

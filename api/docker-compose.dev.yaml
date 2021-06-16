@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  api:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: natta:dev
+    environment:
+      - NODE_ENV=development
+      - MONGODB_URL
+      - PORT
+    ports:
+      - 8300:80
+    volumes:
+      - ./:/usr/src/app
+    command: "npm run dev"
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - nattadb:/data/db
+volumes:
+ nattadb:

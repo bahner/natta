@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  api:
+    restart: always
+    build: .
+    image: natta:latest
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URL
+    ports:
+      - 80:3000
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - nattadb:/data/db
+volumes:
+ nattadb:
